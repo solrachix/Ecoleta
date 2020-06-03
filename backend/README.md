@@ -41,7 +41,7 @@ The Backend was developed with the RESTful API concept in mind.
 
 **devDependencies**
 
-- **nodemon**: ^2.0.2
+- **typescript**: ^4.1.1
 
 # Specifications
 - ## Insomnia (access to GET / POST / PUT / DELETE routes)
@@ -60,9 +60,9 @@ The Backend was developed with the RESTful API concept in mind.
 	### Types of parameters:
 	- **Query Params**: Named parameters sent on the route after "?" usually for (filters, pagination)
 	http://localhost:3333/user?aluno=Carlos
-	- ** Route Param ** s: Parameters used to identify resources
+	- **Route Param** s: Parameters used to identify resources
 	http://localhost:3333/user/:id = http://localhost: 3333/user/1
-	- ** Request Body **: They are used when you want to pass many parameters in a request, for example when creating a user.
+	- **Request Body**: They are used when you want to pass many parameters in a request, for example when creating a user.
 
 - ## Databases
 	There are relational databases (which use SQL language such as MySQL, SQLite, PostgreSQL MS SQL Server) and non-relational databases (Redis, Mongo, Couch), also called NOSQL (Not Only SQL).
