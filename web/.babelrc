@@ -1,0 +1,18 @@
+{
+  "presets": ["es2016"],
+  "plugins": [
+    "babel-loader",
+    "babel-plugin-module-resolver",
+    [ "module-resolver", {
+        "root": ["./src"],
+        "alias": {
+          "@src": "./src",
+          "@components": "./src/components",
+          "@pages": "./src/pages",
+          "@utils": "./src/utils",
+          "@styles": "./src/styles"
+        }
+      }
+    ]
+  ]
+}
