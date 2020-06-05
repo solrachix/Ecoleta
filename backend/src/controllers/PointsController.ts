@@ -18,7 +18,17 @@ class PointsController {
             .distinct();
             // .select('points,*');
 
-        return res.json(points)
+        /**
+         * Processo de virtualização dos campos do banco.
+         */
+        const serializedPoints = points.map(point => {
+            return {
+                ...point,
+                image_url: `${process.env.HOST_APP}:${process.env.PORT_APP}/uploads/${point.image}`,
+            };
+        });
+
+        return res.json(serializedPoints)
     }
     async show(req: Request, res: Response) {
         const { id } = req.params;
@@ -28,6 +38,13 @@ class PointsController {
         if (!point) {
             return res.status(400).json({ message: 'Point not found'});
         }
+/**
+         * Processo de virtualização dos campos do banco.
+         */
+        const serializedPoints =  {
+            ...point,
+            image_url: `${process.env.HOST_APP}:${process.env.PORT_APP}/uploads/${point.image}`,
+        };
 
         /**
          *  SELECT * FROM items
@@ -40,7 +57,7 @@ class PointsController {
             .where("point_items.point_id", id)
             .select("items.title");
 
-        return res.json({ point, items});
+        return res.json({ point: serializedPoints, items});
     }
     async create(req: Request, res: Response) {
         const {
@@ -57,7 +74,7 @@ class PointsController {
         const trx = await knex.transaction();
 
         const point = {
-            image: 'https://images.unsplash.com/photo-1556767576-5ec41e3239ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
+            image: req.file.filename,
             name,
             email,
             whatsapp,
@@ -69,13 +86,16 @@ class PointsController {
         
         const ids = await trx("points").insert(point);
         const point_id = ids[0];
-
-        const pointItems = items.map((item_id: number) => {
-            return {
-                item_id,
-                point_id
-            };
-        })
+        console.log(items)
+        const pointItems = items
+            .split(',')
+            .map((item: string) => Number(item.trim()))
+            .map((item_id: number) => {
+                return {
+                    item_id,
+                    point_id
+                };
+            })
 
         await trx("point_items").insert(pointItems);
 
