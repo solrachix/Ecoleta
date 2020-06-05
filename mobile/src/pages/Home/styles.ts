@@ -27,7 +27,7 @@ export const Description  = styled(Text)`
     max-width: 260px;
     margin-top: 16px;
 
-    /* color: ${({ theme }) => theme.colors.text};
+    /* color: #6C6C80;
 
     font-size: 16px; */
     font-family: "Roboto_400Regular";
@@ -45,9 +45,11 @@ export const Select  = styled.View`
 export const Input  = styled.TextInput`
     height: 60px;
     margin-bottom: 8px;
-    /* padding-horizontal: 24px; */
+    padding-left: 24px;
+    padding-right: 24px;
 
     background-color: ${({ theme }) => theme.colors.secundary};
+    color: ${({ theme }) => theme.colors.text};
     border-radius: 10px;
     font-size: 16px;
 `;

@@ -1,12 +1,17 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
+import { rgba } from 'polished'
 import Constants from "expo-constants";
 
 import MapView, { Marker } from "react-native-maps";
 
+interface ItemProps {
+    selected?: boolean;
+}
+
 export const Container = styled.View`
     flex: 1;
     padding-left: 32px;
-    padding-top: ${20 + Constants.statusBarHeight};
+    padding-top: ${20 + Constants.statusBarHeight}px;
 `;
 
 export const Title = styled.Text`
@@ -24,7 +29,7 @@ export const Description = styled.Text`
 
 export const MapContainer = styled.View`
     flex: 1;
-    width: '100%';
+    width: 100%;
     margin-top: 16px;
 
     border-radius: 10px;
@@ -74,32 +79,36 @@ export const ItemsContainer = styled.View`
     flex-direction: row;
 `;
 
-export const Item = styled.TouchableOpacity`
+export const Item = styled.TouchableOpacity<ItemProps>`
     height: 120px;
     width: 120px;
-    padding-left: 16px;
+    /* padding-left: 16px; */
     padding-top: 20px;
     padding-bottom: 16px;
     margin-right: 8px;
 
-    background-color: ${({ theme }) => theme.colors.secundary};
     border-width: 2px;
-    border-color: #eee;
     border-radius: 8px;
-    
+  ${({ selected, theme }) =>
+    selected ?
+    css`
+      border-color: ${theme.colors.primary};
+      background-color: ${rgba(theme.colors.primary, .2)};
+      /* #e1faec */
+    ` : css`
+        border-color: ${theme.colors.secundary};
+        background-color: ${theme.colors.secundary};
+    `}
+
     justify-content: space-between;
     align-items: center;
 
     text-align: center;
 `;
 
-export const SelectedItem = styled.View`
-    border-color: ${({ theme }) => theme.colors.primary};
-    border-width: 2px;
-`;
-
-export const ItemTitle = styled.View`
+export const ItemTitle = styled.Text`
     font-family: 'Roboto_400Regular';
     font-size: 13px;  
     text-align: center;
+    color: ${({ theme }) => theme.colors.text};
 `;
