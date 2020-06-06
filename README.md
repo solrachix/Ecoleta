@@ -1,6 +1,5 @@
+<img alt="Ecoleta Template" src= "https://github.com/solrachix/ecoleta/blob/master/assets/Template.png?raw=true" />
 
-
-<img alt="GoStack" src="https://github.com/solrachix/ecoleta/blob/master/assets/logo.png?raw=true" />
 
 <p align="center">
   <a href="LICENSE" style="text-decoration: none">
@@ -50,10 +49,22 @@
 ## :rocket: Technologies
 This project was developed with the following technologies:
 
-- [Node.js][node]
-- [React][react]
-- [React Native][rn]
-- [TypeScript][typescript]
+- [TypeScript](https://github.com/Microsoft/TypeScript)
+- [Express](https://github.com/expressjs/express)
+- [React](https://github.com/facebook/react)
+- [React Native](https://github.com/facebook/react-native)
+- [React-Leaflet](https://github.com/PaulLeCam/react-leaflet)
+- [Expo](https://github.com/expo/expo)
+- [Knex](http://knexjs.org/)
+- [Multer](https://www.npmjs.com/package/multer)
+- [SQLite3](https://www.sqlite.org/index.html)
+
+## :hammer: Tools
+- [Visual Studio Code](https://code.visualstudio.com)
+- [Insomnia](https://insomnia.rest)
+- Mobile device (Android)
+- [Expo](https://expo.io/)
+
 
 ## 🔖 Layout
 To access the layout, simply access the following link: [Figma](<https://www.figma.com/file/9TlOcj6l7D05fZhU12xWT3/Ecoleta-(Booster)>).
@@ -91,8 +102,8 @@ Depois que a sua solicitação de recebimento for feita o merging, você pode ex
 This project is under the MIT license. See the file [LICENSE](LICENSE) for more details.
 
 ## 🙏🏼 Acknowledgments
-I want to thank [Rocketseat](https://github.com/Rocketseat) for devising and providing the basis for this project
+Quero agradecer ao [Rocketseat] ( https://github.com/Rocketseat) por criar e fornecer uma base para este projeto
 
 ---
 
-Made with 💜 by Carlos Miguel :wave:
+Feito com Carlos Miguel: wave:
