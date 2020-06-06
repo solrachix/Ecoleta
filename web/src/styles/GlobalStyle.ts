@@ -1,5 +1,5 @@
  import { createGlobalStyle } from './styled-components';
- import { lighten } from 'polished';
+//  import { lighten } from 'polished';
  
  export default createGlobalStyle `
     * {
@@ -14,7 +14,8 @@
         color: ${({ theme }) => theme.colors.text};
     }
 
-    body, input, button {
+    body, input, button, select {
+        outline: none;
         font-family: Roboto, Arial, Helvetica, sans-serif;
     }
 
@@ -23,4 +24,12 @@
         font-family: Ubuntu;
     }
 
+    ::-webkit-scrollbar{
+        width: 8px;
+        background: ${({ theme }) => theme.colors.secundary};
+    }
+    ::-webkit-scrollbar-thumb{
+        background: ${({ theme }) => theme.colors.primary};
+        border-radius: 50px;
+    }
 `;

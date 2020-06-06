@@ -5,7 +5,6 @@ import GlobalStyle from './styles/GlobalStyle'
 
 import Routes from './routes';
 
-// import SetTheme from './components/SetTheme';
 import Header from './components/Header';
 import { LightTheme } from './styles/themes/Themes';
 import { Container } from './styles/App';
@@ -14,11 +13,10 @@ function App() {
   const [ theme, setTheme ] = useState(LightTheme);
   return (
     <ThemeProvider theme={theme}>
-      {/* <SetTheme setTheme={setTheme}/> */}
       {/* <ButterToast position={{vertical: POS_TOP, horizontal: POS_RIGHT}}/> */}
       <GlobalStyle />
       <Container>
-        <Header />
+        <Header theme={{theme, setTheme}} />
         <Routes />
       </Container>
     </ThemeProvider>

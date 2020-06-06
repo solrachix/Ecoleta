@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+import { FiSun } from 'react-icons/fi';
 
 export const Container = styled.div`
-    margin-top: 48px;
+    width: 80%;
+    height: 10%;
+    margin: 30px;
 
     display: flex;
     justify-content: space-between;
@@ -20,4 +23,10 @@ export const Container = styled.div`
         margin-right: 16px;
         color: ${({ theme }) => theme.colors.primary};
     }
+`;
+
+export const Sun = styled(FiSun)`
+    color: ${({ theme }) => theme.colors.primary};
+
+    cursor: pointer;
 `;

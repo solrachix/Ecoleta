@@ -2,11 +2,11 @@ import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import api from '../../services/api';
-import { LeafletMouseEvent } from 'leaflet';
-import { Map, TileLayer, Marker } from 'react-leaflet';
 
 import Dropzone from '../../components/Dropzone';
-import { Container, Form, ItemsGrid } from './styles';
+import Map from '../../components/Map';
+import AlertMessage from '../../components/AlertMessage';
+import { Container, Form, Fieldset, FieldGroup, Field, ItemsGrid } from './styles';
 
 // array ou objeto: manualmente informar o tipo da variavel
 
@@ -42,6 +42,7 @@ const Home = () => {
     const [selectPosition, setSelectPosition] = useState<[number, number]>([0, 0]);
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
     const [selectedFile, setSelectedFile] = useState<File>();
+    const [ alertMessage, setAlertMessage ] = useState<Boolean>(false);
     
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(position => {
@@ -93,13 +94,6 @@ const Home = () => {
         setSelectedCity(City);        
     }
 
-    function handleMapClick(event: LeafletMouseEvent){
-        setSelectPosition([
-            event.latlng.lat,
-            event.latlng.lng,
-        ]);
-    }
-
     function handleSelectItem(id: number) {
         const alreadySelected = selectedItems.findIndex(item => item === id);
     
@@ -142,8 +136,12 @@ const Home = () => {
 
         await api.post('points', data);
 
-        alert('Ponto de coleta criado!');
-        history.push('/');
+        // alert('Ponto de coleta criado!');
+        setAlertMessage(true);
+        setTimeout(() => {
+            // console.log('a')
+            history.push('/');
+        }, 3000);
     }
     return (
         <Container>
@@ -153,12 +151,12 @@ const Home = () => {
                 <Dropzone onFileUploaded={setSelectedFile} />
 
 
-                <fieldset>
+                <Fieldset>
                     <legend>
                         <h2>Dados</h2>
                     </legend>
 
-                    <div className="field">
+                    <Field>
                         <label htmlFor="name">Nome da entidade</label>
                         <input 
                             type="text"
@@ -166,10 +164,10 @@ const Home = () => {
                             id="name"
                             onChange={handleInputChange}
                         />
-                    </div>
+                    </Field>
 
-                    <div className="field-group">
-                        <div className="field">
+                    <FieldGroup>
+                        <Field>
                             <label htmlFor="email">E-mail</label>
                             <input 
                                 type="email"
@@ -177,8 +175,8 @@ const Home = () => {
                                 id="email"
                                 onChange={handleInputChange}
                             />
-                        </div>
-                        <div className="field">
+                        </Field>
+                        <Field>
                             <label htmlFor="whatsapp">Whatsapp</label>
                             <input 
                                 type="text"
@@ -186,27 +184,20 @@ const Home = () => {
                                 id="whatsapp"
                                 onChange={handleInputChange}
                             />
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset>
+                        </Field>
+                    </FieldGroup>
+                </Fieldset>
+                <Fieldset>
                     <legend>
                         <h2>Endereço</h2>
                         <span>Adicione o endereço no mapa</span>
                     </legend>
 
-                    <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
-                        <TileLayer
-                            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-
-                        <Marker position={selectPosition} />
-                    </Map>
+                    <Map position={{ initialPosition, selectPosition, setSelectPosition }} />
 
 
-                    <div className="field-group">
-                        <div className="field">
+                    <FieldGroup>
+                        <Field>
                             <label htmlFor="uf">Estado(UF)</label>
                             <select
                                 name="uf"
@@ -218,8 +209,8 @@ const Home = () => {
                                     <option key={uf} value={uf}>{uf}</option>
                                 ))}
                             </select>
-                        </div>
-                        <div className="field">
+                        </Field>
+                        <Field>
                             <label htmlFor="city">Cidade</label>
                             <select 
                                 name="city"
@@ -231,10 +222,10 @@ const Home = () => {
                                     <option key={city.id} value={city.nome}>{city.nome}</option>
                                 ))}
                             </select>
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset>
+                        </Field>
+                    </FieldGroup>
+                </Fieldset>
+                <Fieldset>
                     <legend>
                         <h2>Ítems de coletas</h2>
                         <span>Selecione um ou mais itens abaixo</span>
@@ -254,12 +245,14 @@ const Home = () => {
                     }                        
                         
                     </ItemsGrid>
-                </fieldset>
+                </Fieldset>
 
                 <button type="submit">
                     Cadastrar ponto de coleta
                 </button>
             </Form>
+
+            <AlertMessage actived={alertMessage} />
         </Container>
     )
 }

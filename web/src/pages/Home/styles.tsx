@@ -1,15 +1,25 @@
 import styled from 'styled-components';
+import { lighten } from 'polished';
 import background from '../../assets/home-background.svg';
 
 export const Container = styled.div`
     width: 100%;
-    height: 100vh;
-    background: url('${background}') no-repeat 400px bottom;
+    min-height: calc(90vh - 35px);
+    padding: 0px 0px 0px 10%;
+    /* max-width: 1200px; */
+    @media(max-width: 700px) {
+        padding: 0px 0px 0px 0px;
+    }
+
+    background: url('${background}') no-repeat 400px top;
+
+    overflow: hidden;
 `;
 
 export const Content = styled.div`
     flex: 1;
-    max-width: 560px;
+    width: 100%;
+    max-width: 460px;
 
     display: flex;
     flex-direction: column;
@@ -17,13 +27,14 @@ export const Content = styled.div`
     
     h1 {
         font-size: 54px;
-        color: ${({ theme }) => theme.colors.text};
+        color: ${({ theme }) => theme.title === "Dark" ? theme.colors.primary : theme.colors.text};
     }
 
     p {
         font-size: 24px;
         margin-top: 24px;
         line-height: 38px;
+        color: ${({ theme }) => lighten(0.2, theme.colors.text)};
     }
 
     a {
@@ -54,7 +65,7 @@ export const Content = styled.div`
     }
 
     a span svg {
-        color: ${({ theme }) => theme.colors.secundary};
+        color: #FFF;
         width: 20px;
         height: 20px;
     }
@@ -62,14 +73,20 @@ export const Content = styled.div`
     a strong {
         flex: 1;
         text-align: center;
-        color: ${({ theme }) => theme.colors.secundary};
+        color: #FFF;
     }
 
     a:hover {
         background: ${({ theme }) => theme.colors.primary};
     }
 
+    @media(max-width: 700px) {
+        max-width: 100%;
+        padding: 0px 5% 0px 5%;
+    }
+    
     @media(max-width: 900px) {
+        align-items: center;
         text-align: center;
 
         h1 {

@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import { rgba, lighten } from 'polished';
 
 export const Container = styled.div`
     height: 300px;
-    background: #E1FAEC;
+    background: ${({ theme }) => rgba(theme.colors.primary, 0.08)};
+    /* #E1FAEC; */
     border-radius: 10px;
 
     display: flex;
@@ -22,16 +24,16 @@ export const P = styled.p`
     width: calc(100% - 60px);
     height: calc(100% - 60px);
     border-radius: 10px;
-    border: 1px dashed #4ECB79;
+    border: 1px dashed  ${({ theme }) => lighten(0.05, theme.colors.primary)}; /* #4ECB79 */
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #333;
+    color: ${({ theme }) => theme.colors.text};
     
     svg {
-        color: #4ECB79;
+        color: ${({ theme }) => lighten(0.05, theme.colors.primary)}; /* #4ECB79 */
         width: 24px;
         height: 24px;
         margin-bottom: 8px;
