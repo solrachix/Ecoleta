@@ -1,0 +1,7 @@
+{
+  "project_name": "Ecoleta",
+  "type": "Fullstack",
+  "backend": "./backend",
+  "web": "./web",
+  "mobile": "./mobile"
+}
