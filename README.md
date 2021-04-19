@@ -2,16 +2,16 @@
 
 
 <p align="center">
-  <a href="LICENSE" style="text-decoration: none">
+  <a href="LICENSE">
     <img alt="License" src="https://img.shields.io/github/license/solrachix/ecoleta?color=34CB79" />
   </a>
-  <a href="https://github.com/solrachix/ecoleta/issues" style="text-decoration: none">
+  <a href="https://github.com/solrachix/ecoleta/issues">
     <img alt="Issues" src="https://img.shields.io/github/issues/solrachix/ecoleta?color=34CB79" />
   </a>
-  <a href="#" style="text-decoration: none">
+  <a href="#" >
     <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/solrachix/ecoleta?color=34CB79" />
   </a>
-  <a href="https://github.com/solrachix/ecoleta/stargazers" style="text-decoration: none" >
+  <a href="https://github.com/solrachix/ecoleta/stargazers">
     <img alt="Stars" src="https://img.shields.io/github/stars/solrachix/ecoleta?style=social" />
   </a>
 </p>
