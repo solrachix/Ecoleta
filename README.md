@@ -67,11 +67,11 @@ This project was developed with the following technologies:
 
 
 ## 🔖 Layout
-To access the layout, simply access the following link: [Figma](<https://www.figma.com/file/9TlOcj6l7D05fZhU12xWT3/Ecoleta-(Booster)>).
+To access the layout, simply access the following link: [Figma](https://www.figma.com/file/9TlOcj6l7D05fZhU12xWT3/Ecoleta-(Booster)).
 
 
 ## :information_source: Como usar
-To clone and run this application, you will need [Git] (https://git-scm.com) installed on your computer, or simply download the compressed application [LINK] (https://github.com/cogumm/NextLevelWeek /archive/master.zip)
+To clone and run this application, you will need [Git](https://git-scm.com) installed on your computer, or simply download the compressed application [LINK](https://github.com/cogumm/NextLevelWeek/archive/master.zip)
 
 ### Install Under construction :construction:
 ```bash
@@ -102,7 +102,7 @@ Depois que a sua solicitação de recebimento for feita o merging, você pode ex
 This project is under the MIT license. See the file [LICENSE](LICENSE) for more details.
 
 ## 🙏🏼 Acknowledgments
-Quero agradecer ao [Rocketseat] ( https://github.com/Rocketseat) por criar e fornecer uma base para este projeto
+Quero agradecer ao [Rocketseat](https://github.com/Rocketseat) por criar e fornecer uma base para este projeto
 
 ---
 
